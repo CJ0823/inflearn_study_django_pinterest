@@ -74,5 +74,12 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 venv/
-
 .env
+db.sqlite3
+.idea/
+
+*.log
+*.pot
+*.pyc
+__pycache__/
+
