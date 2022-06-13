@@ -1,0 +1,13 @@
+from django.urls import path
+from django.views.generic import TemplateView
+
+from articleapp.views import ArticleCreationView, ArticleDetailView, ArticleUpdateView, ArticleDeleteView, \
+    ArticleListView
+from commentapp.views import CommentCreateView, CommentDeleteView
+
+app_name = 'commentapp'
+
+urlpatterns = [
+    path('create/', CommentCreateView.as_view(), name='create'),
+    path('delete/<int:pk>', CommentDeleteView.as_view(), name='delete'),
+]
