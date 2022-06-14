@@ -7,20 +7,23 @@
         {% if target_user.profile %}
             <img src="{{ target_user.profile.image.url }}" alt=""
                  style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem;">
-            <p>
-            <h2>
-                {{ target_user.profile.nickname }}
-            </h2>
-
-            {% if target_user == user %}
-                <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">
-                    edit
-                </a>
-            {% endif %}
+            <div>
+                <h2 style="display: inline-block;">
+                    {{ target_user.profile.nickname }}
+                </h2>
+                {% if target_user == user %}
+                    <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
+                       class="material-icons"
+                       style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;">
+                        <div>
+                            edit
+                        </div>
+                    </a>
+                {% endif %}
+            </div>
             <h5 style="margin-bottom: 3rem;">
                 {{ target_user.profile.message }}
             </h5>
-            </p>
         {% else %}
             {% if target_user == user %}
                 <a href="{% url 'profileapp:create' %}">
@@ -37,21 +40,25 @@
         {% endif %}
 
         {% if target_user == user %}
-            <a href="{% url 'accountapp:update' pk=target_user.pk %}">
-                <p>
-                    Change Info
-                </p>
+            <a href="{% url 'accountapp:update' pk=target_user.pk %}"
+               class="material-icons"
+               style="box-shadow: 0 0 4px #ccc; border-radius: 10rem; padding: .4rem;">
+                <div>
+                    settings
+                </div>
             </a>
-            <a href="{% url 'accountapp:delete' pk=target_user.pk %}">
-                <p>
-                    Quit
-                </p>
+            <a href="{% url 'accountapp:delete' pk=target_user.pk %}"
+               class="material-icons"
+               style="box-shadow: 0 0 4px #fcc; border-radius: 10rem; padding: .4rem;">
+                <div>
+                    cancel
+                </div>
             </a>
         {% endif %}
 
-    <hr>
-    <div>
-        {% include 'snippets/list_fragment.html' with article_list=object_list %}
-    </div>
+        <hr>
+        <div>
+            {% include 'snippets/list_fragment.html' with article_list=object_list %}
+        </div>
     </div>
 {% endblock %}
